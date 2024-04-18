@@ -2,7 +2,7 @@
 
 int main()
 {
-    int segundo, minuto, hora, resto_segundo;
+    int segundo, minuto, hora, resto_segundo=0;
 
     printf("Digite um numero inteiro de segundos: \n");
     scanf("%d",&segundo);
