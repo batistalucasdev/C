@@ -11,23 +11,23 @@ int main()
     scanf(" %c",&x);
     if (x == '+')
     {
-        printf("A soma dos números é: %0.2f",num1 + num2);
+        printf("A soma dos números é: %0.2f\n",num1 + num2);
     }
     else if (x == '-')
     {
-        printf("A subtracao dos números é: %0.2f",num1 - num2);
+        printf("A subtracao dos números é: %0.2f\n",num1 - num2);
     }
     else if (x == '/')
     {
-        printf("A divisao dos números é: %0.2f",num1 / num2);
+        printf("A divisao dos números é: %0.2f\n",num1 / num2);
     }
     else if (x == '*')
     {
-        printf("A multiplicacao dos números é: %0.2f",num1 * num2);
+        printf("A multiplicacao dos números é: %0.2f\n",num1 * num2);
     }
     else
     {
-        printf("Operador invalido.");
+        printf("Operador invalido.\n");
     }
     getchar();
     return 0;
