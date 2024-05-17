@@ -5,39 +5,32 @@
 int main()
 {
     int hora;
-    float valor, salario, bonus50, bonus100;
+    float valor, salario;
 
     printf("Digite o numero de horas trabalhadas na semana: \n");
     scanf("%d", &hora);
     printf("Digite o valor da hora: \n");
     scanf("%f", &valor);
 
-    salario = hora * valor;
-
-    if (salario <= 40)
+    if (hora <= 40)
     {
-        printf("O salario eh: %f\n", salario);
+        salario = hora * valor;
+        printf("O salario eh: R$%.2f\n", salario);
     }
-
-    if (salario > 40 && salario <= 60)
+/*
+    else if (salario > 40 && salario <= 60)
     {
-        bonus50 = salario + (salario * 50/100);
-        //salario = salario * 1.5;
-        printf("O salario eh: %f\n", bonus50);
+        salario = hora * valor;
+        salario = salario + salario * 1.5;
+        printf("O salario eh: R$%.2f\n", salario);
     }
-
-    if (salario > 60)
+*/
+    else if (salario > 60)
     {
-        bonus100 = salario + (salario * 100/100);
-        //salario = salario * 2.0;
-        printf("O salario eh: %f\n", bonus100);
+        salario = hora * valor;
+        salario = salario + salario * 2.0;
+        printf("O salario eh: R$%.2f\n", salario);
     }
 
     return 0;
 }
-/*
-intervalos:
-h <= 40
-40 < h <= 60
-h > 60
-*/
