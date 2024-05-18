@@ -25,7 +25,7 @@ int main()
         salario = (hora * valor) + bonus50;
         printf("O salario eh: R$%.2f\n", salario);
     }
-
+    
     if (salario > 60)
     {
         hora_mais = hora - 60;
