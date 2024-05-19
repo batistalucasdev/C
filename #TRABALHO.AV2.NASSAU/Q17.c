@@ -3,27 +3,27 @@
 #include <stdio.h>
 
 int main() {
-    float valor, soma = 0.0;
+    float num, soma = 0.0;
     int contagem = 0;
 
     printf("Digite valores positivos. Para parar, digite um valor negativo.\n");
 
-    printf("Digite um valor: ");
-    scanf("%f", &valor);
+    printf("Digite um número: ");
+    scanf("%f", &num);
 
-    while (valor >= 0) {
-        soma += valor;
+    while (num >= 0)
+    {
+        soma += num;
         contagem++;
-
         printf("Digite um valor: ");
-        scanf("%f", &valor);
+        scanf("%f", &num);
     }
 
     if (contagem == 0) {
         printf("Nenhum valor positivo foi fornecido.\n");
     } else {
         float media = soma / contagem;
-        printf("A média dos valores fornecidos é: %.2f\n", media);
+        printf("A média dos valores digitados é: %.2f\n", media);
     }
 
     return 0;
