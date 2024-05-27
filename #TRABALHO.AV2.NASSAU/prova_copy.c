@@ -1,26 +1,3 @@
-/*
-fazer as questoes com switch case
-
-#include <stdio.h>
-
-int questoes(){
-	int questao = 0;
-	do{
-		printf("Qual questao voce deseja responder?\n");
-		printf("1 - Questao 17\n");
-		printf("2 - Questao 20\n");
-		printf("3 - Questao 22\n");
-		printf("4 - Questao 30\n");
-        printf("5 - Questao 31\n");
-		scanf("%d",&questao);
-		if (!((questao >=1 )&&(questao <= 5))){
-			printf("Opcao invalida! Digite um valor de 1 a 5:\n");
-		}
-	}while (!((questao >=1 )&&(questao <= 5)));
-	return questao;
-}
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -28,8 +5,53 @@ int questoes(){
 void questao1();
 void questao2();
 void questao3();
-void questao3();
-void questao3();
+void questao4();
+void questao5();
+
+int ehBissexto(int ano) {
+    if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+// Função para retornar o número de dias em um mês de um determinado ano
+int diasNoMes(int mes, int ano) {
+    switch (mes) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            return 31;
+        case 4: case 6: case 9: case 11:
+            return 30;
+        case 2:
+            if (ehBissexto(ano)) {
+                return 29;
+            } else {
+                return 28;
+            }
+        default:
+            return -1; // Valor inválido para mês
+    }
+}
+
+int calcularDuracaoJogo(int horaInicio, int minutoInicio, int horaTermino, int minutoTermino) {
+    // Converter hora e minuto de início para minutos desde o início do dia
+    int inicioEmMinutos = horaInicio * 60 + minutoInicio;
+    
+    // Converter hora e minuto de término para minutos desde o início do dia
+    int terminoEmMinutos = horaTermino * 60 + minutoTermino;
+    
+    // Calcular a duração do jogo em minutos
+    int duracao;
+    if (terminoEmMinutos >= inicioEmMinutos) {
+        duracao = terminoEmMinutos - inicioEmMinutos;
+    } else {
+        // Caso o jogo termine no dia seguinte
+        duracao = (24 * 60 - inicioEmMinutos) + terminoEmMinutos;
+    }
+    
+    return duracao;
+}
 
 int main() {
     int escolha;
@@ -39,8 +61,8 @@ int main() {
         printf("1. Questão 17\n");
         printf("2. Questão 20\n");
         printf("3. Questão 22\n");
-		printf("4. Questão 30\n");
-		printf("5. Questão 31\n");
+        printf("4. Questão 30\n");
+        printf("5. Questão 31\n");
         printf("0. Sair\n");
         printf("Digite a sua escolha: ");
         scanf("%d", &escolha);
@@ -54,6 +76,12 @@ int main() {
                 break;
             case 3:
                 questao3();
+                break;
+            case 4:
+                questao4();
+                break;
+            case 5:
+                questao5();
                 break;
             case 0:
                 printf("Saindo...\n");
@@ -69,15 +97,14 @@ int main() {
 void questao1() {
     printf("Esta é a Questão 17.\n");
 
-	float num, soma = 0.0;
+    float num, soma = 0.0;
     int contagem = 0;
 
     printf("Digite valores positivos. Para parar, digite um valor negativo.\n");
     printf("Digite um número: ");
     scanf("%f", &num);
 
-    while (num >= 0)
-    {
+    while (num >= 0) {
         soma += num;
         contagem++;
         printf("Digite um valor: ");
@@ -152,32 +179,24 @@ void questao3() {
 void questao4() {
     printf("Esta é a Questão 30.\n");
 
-}
+    int mes, ano;
 
+    printf("Digite o mês (1-12): ");
+    scanf("%d", &mes);
+    printf("Digite o ano: ");
+    scanf("%d", &ano);
+
+    int dias = diasNoMes(mes, ano);
+    if (dias == -1) {
+        printf("Mês inválido.\n");
+    } else {
+        printf("O mês %d do ano %d tem %d dias.\n", mes, ano, dias);
+    }
+}
 
 void questao5() {
     printf("Esta é a Questão 31.\n");
-	
-    int calcularDuracaoJogo(int horaInicio, int minutoInicio, int horaTermino, int minutoTermino) {
-    // Converter hora e minuto de início para minutos desde o início do dia
-    int inicioEmMinutos = horaInicio * 60 + minutoInicio;
-    
-    // Converter hora e minuto de término para minutos desde o início do dia
-    int terminoEmMinutos = horaTermino * 60 + minutoTermino;
-    
-    // Calcular a duração do jogo em minutos
-    int duracao;
-    if (terminoEmMinutos >= inicioEmMinutos) {
-        duracao = terminoEmMinutos - inicioEmMinutos;
-    } else {
-        // Caso o jogo termine no dia seguinte
-        duracao = (24 * 60 - inicioEmMinutos) + terminoEmMinutos;
-    }
-    
-    return duracao;
-}
 
-int main() {
     int horaInicio, minutoInicio, horaTermino, minutoTermino;
     
     // Solicitar ao usuário a hora e minuto de início
@@ -195,9 +214,4 @@ int main() {
     // Calcular e exibir a duração do jogo
     int duracao = calcularDuracaoJogo(horaInicio, minutoInicio, horaTermino, minutoTermino);
     printf("A duração do jogo é de %d minutos\n", duracao);
-    
-    return 0;
 }
-    
-}
-
