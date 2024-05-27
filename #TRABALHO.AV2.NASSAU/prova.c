@@ -1,8 +1,6 @@
 /*
-todas as questoes
-fazer com switch case
+fazer as questoes com switch case
 
-*/
 #include <stdio.h>
 
 int questoes(){
@@ -21,29 +19,32 @@ int questoes(){
 	}while (!((questao >=1 )&&(questao <= 5)));
 	return questao;
 }
-
+*/
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-// Declaração das funções
 void questao1();
 void questao2();
+void questao3();
+void questao3();
 void questao3();
 
 int main() {
     int escolha;
 
     do {
-        // Menu principal
-        printf("\nEscolha uma das questões para executar:\n");
-        printf("1. Questão 1\n");
-        printf("2. Questão 2\n");
-        printf("3. Questão 3\n");
+        printf("\nEscolha a questao que voce quer responder:\n");
+        printf("1. Questão 17\n");
+        printf("2. Questão 20\n");
+        printf("3. Questão 22\n");
+		printf("4. Questão 30\n");
+		printf("5. Questão 31\n");
         printf("0. Sair\n");
         printf("Digite a sua escolha: ");
         scanf("%d", &escolha);
 
-        // Chamando a função apropriada com base na escolha do usuário
         switch (escolha) {
             case 1:
                 questao1();
@@ -65,14 +66,13 @@ int main() {
     return 0;
 }
 
-// Implementação das funções
-
 void questao1() {
-    float num, soma = 0.0;
+    printf("Esta é a Questão 17.\n");
+
+	float num, soma = 0.0;
     int contagem = 0;
 
     printf("Digite valores positivos. Para parar, digite um valor negativo.\n");
-
     printf("Digite um número: ");
     scanf("%f", &num);
 
@@ -93,11 +93,70 @@ void questao1() {
 }
 
 void questao2() {
-    printf("Esta é a implementação da Questão 2.\n");
-    // Adicione o código da questão 2 aqui
+    printf("Esta é a Questão 20.\n");
+
+    float horas_trabalhadas, valor_hora, salario;
+    
+    printf("Digite o número de horas trabalhadas na semana: ");
+    scanf("%f", &horas_trabalhadas);
+    printf("Digite o valor da hora trabalhada: ");
+    scanf("%f", &valor_hora);
+
+    if (horas_trabalhadas <= 40) {
+        salario = horas_trabalhadas * valor_hora;
+    } else if (horas_trabalhadas <= 60) {
+        salario = 40 * valor_hora + (horas_trabalhadas - 40) * valor_hora * 1.5;
+    } else {
+        salario = 40 * valor_hora + 20 * valor_hora * 1.5 + (horas_trabalhadas - 60) * valor_hora * 2;
+    }
+
+    printf("O salário semanal é: R$%.2f\n", salario);
 }
 
 void questao3() {
-    printf("Esta é a implementação da Questão 3.\n");
+    printf("Esta é a Questão 22.\n");
+
+    int numeroMagico, chute, tentativas = 0;
+
+    srand(time(0));
+    numeroMagico = rand() % 501;
+
+    printf("Bem-vindo ao jogo do número mágico!\n");
+    printf("Tente adivinhar o número mágico entre 0 e 500.\n");
+
+    do {
+        printf("Digite seu chute: ");
+        scanf("%d", &chute);
+        tentativas++;
+
+        if (chute > numeroMagico) {
+            printf("O número mágico é menor!\n");
+        } else if (chute < numeroMagico) {
+            printf("O número mágico é maior!\n");
+        } else {
+            printf("Parabéns! Você acertou o número mágico em %d tentativas.\n", tentativas);
+            if (tentativas >= 1 && tentativas <= 3) {
+                printf("Você é muito sortudo!\n");
+            } else if (tentativas >= 4 && tentativas <= 6) {
+                printf("Você é sortudo!\n");
+            } else if (tentativas >= 7 && tentativas <= 10) {
+                printf("Você é normal.\n");
+            } else {
+                printf("Tente novamente!\n");
+            }
+            break;
+        }
+    } while (1);
+}
+
+void questao4() {
+    printf("Esta é a Questão 30.\n");
     // Adicione o código da questão 3 aqui
 }
+
+
+void questao3() {
+    printf("Esta é a Questão 31.\n");
+    // Adicione o código da questão 3 aqui
+}
+
